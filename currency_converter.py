@@ -1,27 +1,22 @@
 # currency_converter.py
 
-
 exchange_rates = {
-    'USD_TO_EUR': 0.85,
-    'EUR_TO_USD': 1.18,
-    'USD_TO_JPY': 110.53,
-    'JPY_TO_USD': 0.0090,
+    'USD': 1,
+    'EUR': 0.85,
+    'JPY': 110.53,
 }
 
 def convert_currency(amount, from_currency, to_currency):
-    
-    
-    
+   
     from_currency = from_currency.upper()
     to_currency = to_currency.upper()
 
-   
-    key = f'{from_currency}_TO_{to_currency}'
-
     
-    if key in exchange_rates:
+    if from_currency in exchange_rates and to_currency in exchange_rates:
         
-        return amount * exchange_rates[key]
+        rate = exchange_rates[to_currency] / exchange_rates[from_currency]
+        return amount * rate
     else:
-        r
+        
         raise ValueError(f"No exchange rate for {from_currency} to {to_currency}")
+
